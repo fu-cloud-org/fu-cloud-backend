@@ -182,7 +182,7 @@ CREATE TABLE `bms_promotion`  (
 -- ----------------------------
 -- Records of bms_promotion
 -- ----------------------------
-INSERT INTO `bms_promotion` VALUES (1, '开发者头条', 'https://juejin.cn/', '开发者头条');
+INSERT INTO `bms_promotion` VALUES (1, '硫没有正七价', 'https://weapons.schwefel.me/', '硫没有正七价');
 INSERT INTO `bms_promotion` VALUES (2, '并发编程网', 'https://juejin.cn/', '并发编程网');
 INSERT INTO `bms_promotion` VALUES (3, '掘金', 'https://juejin.cn/', '掘金');
 

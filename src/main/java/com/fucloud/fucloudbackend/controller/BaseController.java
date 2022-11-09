@@ -1,2 +1,4 @@
-package com.fucloud.fucloudbackend.controller;public class BaseController {
+package com.fucloud.fucloudbackend.controller;
+
+public class BaseController {
 }
