@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fucloud.fucloudbackend.dao.BmsTipMapper">
+    <select id="getRandomTip" resultType="com.fucloud.fucloudbackend.model.entity.BmsTip">
+        select * from bms_tip order by rand() limit 1
+    </select>
+</mapper>
