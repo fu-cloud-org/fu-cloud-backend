@@ -11,7 +11,6 @@ import java.util.Date;
 @Builder
 @Accessors(chain = true)
 @TableName("bms_billboard")
-@NoArgsConstructor
 @AllArgsConstructor
 public class BmsBillboard implements Serializable {
 
