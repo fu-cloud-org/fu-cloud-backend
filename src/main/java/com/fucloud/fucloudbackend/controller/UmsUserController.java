@@ -14,6 +14,8 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.fucloud.fucloudbackend.jwt.JwtUtil.USER_NAME;
+
 @RestController
 @RequestMapping("/user")
 public class UmsUserController extends BaseController {
@@ -42,5 +44,12 @@ public class UmsUserController extends BaseController {
         map.put("token", token);
         return ResultApi.success(map, "登录成功");
     }
+
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    public ResultApi<UmsUser> getUser(@RequestHeader(value = USER_NAME) String userName) {
+        UmsUser user = umsUserService.getUserByUsername(userName);
+        return ResultApi.success(user);
+    }
+
 
 }
