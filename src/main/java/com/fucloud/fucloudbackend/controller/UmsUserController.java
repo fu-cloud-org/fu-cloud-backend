@@ -51,5 +51,10 @@ public class UmsUserController extends BaseController {
         return ResultApi.success(user);
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ResultApi<Object> logOut() {
+        return ResultApi.success(null, "注销成功");
+    }
+
 
 }
