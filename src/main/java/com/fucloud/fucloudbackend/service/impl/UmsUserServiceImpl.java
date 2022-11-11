@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fucloud.fucloudbackend.common.exception.AssertsApi;
 import com.fucloud.fucloudbackend.dao.UmsUserMapper;
+import com.fucloud.fucloudbackend.jwt.JwtUtil;
+import com.fucloud.fucloudbackend.model.dto.LoginDTO;
 import com.fucloud.fucloudbackend.model.dto.RegisterDTO;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.service.UmsUserService;
@@ -42,6 +44,23 @@ public class UmsUserServiceImpl
 
     @Override
     public UmsUser getUserByUsername(String username) {
-        return null;
+        return baseMapper.selectOne(new LambdaQueryWrapper<UmsUser>().eq(UmsUser::getUsername, username));
+    }
+
+    @Override
+    public String executeLogin(LoginDTO dto) {
+        String token = null;
+        try {
+            UmsUser user = getUserByUsername(dto.getUsername());
+            String encodePwd = MD5Utils.getPwd(dto.getPassword());
+            if(!encodePwd.equals(user.getPassword()))
+            {
+                throw new Exception("密码错误");
+            }
+            token = JwtUtil.generateToken(String.valueOf(user.getUsername()));
+        } catch (Exception e) {
+            log.warn("用户不存在or密码验证失败=======>"+ dto.getUsername());
+        }
+        return token;
     }
 }

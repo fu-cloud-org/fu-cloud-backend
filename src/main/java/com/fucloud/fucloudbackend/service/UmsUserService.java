@@ -1,6 +1,7 @@
 package com.fucloud.fucloudbackend.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.fucloud.fucloudbackend.model.dto.LoginDTO;
 import com.fucloud.fucloudbackend.model.dto.RegisterDTO;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
 
@@ -26,7 +27,7 @@ public interface UmsUserService extends IService<UmsUser> {
      * @param dto
      * @return 生成的JWT的token
      */
-//    String executeLogin(LoginDTO dto);
+    String executeLogin(LoginDTO dto);
     /**
      * 获取用户信息
      *
