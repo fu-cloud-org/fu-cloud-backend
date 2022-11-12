@@ -27,7 +27,8 @@ public class UmsUserServiceImpl
         wrapper.eq(UmsUser::getUsername, dto.getName()).or().eq(UmsUser::getEmail, dto.getEmail());
         UmsUser umsUser = baseMapper.selectOne(wrapper);
         if (!ObjectUtils.isEmpty(umsUser)) {
-            AssertsApi.fail("账号或邮箱已存在！");
+//            AssertsApi.fail("账号或邮箱已存在！");
+            return null;
         }
         UmsUser addUser = UmsUser.builder()
                 .username(dto.getName())

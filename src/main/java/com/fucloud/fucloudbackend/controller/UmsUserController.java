@@ -26,8 +26,11 @@ public class UmsUserController extends BaseController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResultApi<Map<String, Object>> register(@Valid @RequestBody RegisterDTO dto) {
         UmsUser user = umsUserService.executeRegister(dto);
-        if (ObjectUtils.isEmpty(user)) {
-            return ResultApi.failed("账号注册失败");
+//        if (ObjectUtils.isEmpty(user)) {
+//            return ResultApi.failed("账号注册失败");
+//        }
+        if (user == null) {
+            return ResultApi.failed("用户名已存在或邮箱已被注册");
         }
         Map<String, Object> map = new HashMap<>(16);
         map.put("user", user);
@@ -38,7 +41,7 @@ public class UmsUserController extends BaseController {
     public ResultApi<Map<String, String>> login(@Valid @RequestBody LoginDTO dto) {
         String token = umsUserService.executeLogin(dto);
         if (ObjectUtils.isEmpty(token)) {
-            return ResultApi.failed("账号密码错误");
+            return ResultApi.failed("用户名或密码错误");
         }
         Map<String, String> map = new HashMap<>(16);
         map.put("token", token);
@@ -53,7 +56,7 @@ public class UmsUserController extends BaseController {
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ResultApi<Object> logOut() {
-        return ResultApi.success(null, "注销成功");
+        return ResultApi.success(null, "退出登陆成功");
     }
 
 
