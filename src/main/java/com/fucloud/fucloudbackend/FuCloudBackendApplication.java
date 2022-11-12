@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@MapperScan("com.fucloud.fucloudbackend.dao")
+//@MapperScan("com.fucloud.fucloudbackend.dao")
 public class FuCloudBackendApplication extends SpringBootServletInitializer {
 
     @Override
