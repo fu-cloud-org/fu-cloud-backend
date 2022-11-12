@@ -28,8 +28,8 @@ CREATE TABLE `bms_billboard`  (
 -- ----------------------------
 -- Records of bms_billboard
 -- ----------------------------
-INSERT INTO `bms_billboard` VALUES (2, '无语住啦', '2022-11-9 23:16:19', 0);
-INSERT INTO `bms_billboard` VALUES (4, '系统已更新至最新版1.0.1', NULL, 1);
+INSERT INTO `bms_billboard` VALUES (2, '愿意乘冷风去，直出福云间', '2022-11-9 23:16:19', 1);
+INSERT INTO `bms_billboard` VALUES (4, '系统已更新至最新版1.0.1', NULL, 0);
 
 
 -- ----------------------------
@@ -64,9 +64,10 @@ CREATE TABLE `bms_post`  (
                              `view` int NOT NULL DEFAULT 0 COMMENT '浏览统计',
                              `top` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否置顶，1-是，0-否',
                              `essence` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否加精，1-是，0-否',
-                             `section_id` int NULL DEFAULT 0 COMMENT '专栏ID',
+                             `section_id` int NULL DEFAULT 0 COMMENT '问答id',
                              `create_time` datetime NOT NULL COMMENT '发布时间',
                              `modify_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+                             `cover` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '/img/cover/fu-cloud-org.jpg' COMMENT '封面',
                              UNIQUE INDEX `title`(`title`) USING BTREE,
                              INDEX `user_id`(`user_id`) USING BTREE,
                              INDEX `create_time`(`create_time`) USING BTREE
@@ -75,18 +76,18 @@ CREATE TABLE `bms_post`  (
 -- ----------------------------
 -- Records of bms_post
 -- ----------------------------
-INSERT INTO `bms_post` VALUES ('1333447953558765569', '1', '12\n2\n\n', '1349290158897311745', 0, 0, 77, b'0', b'0', 0, '2020-12-01 00:29:01', '2020-12-03 23:56:51');
-INSERT INTO `bms_post` VALUES ('1349362401438392322', '2021 健康，快乐', '2021的`FLAG`\n\n1. 技能进步\n2. 没有烦恼\n3. 发财 :smile:\n\n', '1349290158897311745', 0, 0, 21, b'0', b'0', 0, '2021-01-13 22:27:21', '2021-01-14 17:30:13');
-INSERT INTO `bms_post` VALUES ('1334481725322297346', 'hello，spring-security', ':hibiscus: spring-security\n\n', '1349290158897311745', 0, 0, 46, b'0', b'0', 0, '2020-12-03 20:56:51', NULL);
-INSERT INTO `bms_post` VALUES ('1332650453142827009', '哈哈哈，helloworld', '这是第一篇哦\n\n> hi :handshake: 你好\n\n`hello world`\n\n:+1: 很好\n', '1349290158897311745', 0, 0, 29, b'0', b'0', 1, '2020-11-28 19:40:02', '2020-11-28 19:46:39');
-INSERT INTO `bms_post` VALUES ('1333432347031646209', '哈哈哈，换了个dark主题', '主题更换为Dark\n\n', '1349290158897311745', 0, 0, 6, b'0', b'0', 0, '2020-11-30 23:27:00', NULL);
-INSERT INTO `bms_post` VALUES ('1333668258587750401', '嘿嘿，测试一下啊', '大家好\n`Hello everyone!`\n\n\n\n', '1349290158897311745', 0, 0, 7, b'0', b'0', 0, '2020-12-01 15:04:26', '2020-12-01 16:49:14');
-INSERT INTO `bms_post` VALUES ('1332682473151635458', '我要发财', '2021 冲冲冲！！！\n\n', '1349290158897311745', 0, 0, 94, b'0', b'0', 2, '2020-11-28 21:47:16', '2020-11-30 19:40:22');
-INSERT INTO `bms_post` VALUES ('1333695976536748034', '最新版本介绍，同步更新！', '<p align=center>一款基于SpringBoot构建的智慧社区系统</p>\n\n<p align=center>\n<a href=\"https://github.com/1020317774/rhapsody-admin/stargazers\"><img alt=\"GitHub release\" src=\"https://img.shields.io/github/release/1020317774/rhapsody-admin?style=flat-square\"></a>\n<a href=\"https://github.com/1020317774/rhapsody-admin/blob/main/LICENSE\"><img alt=\"GitHub license\" src=\"https://img.shields.io/github/license/1020317774/rhapsody-admin\"></a>\n</p>\n\n### Hi there :wave:\n\n<!--\n**1020317774/1020317774** is a :sparkles: _special_ :sparkles: repository because its `README.md` (this file) appears on your GitHub profile.\n\nHere are some ideas to get you started:\n\n- :telescope: I’m currently working on ...\n- :seedling: I’m currently learning ...\n- :dancers: I’m looking to collaborate on ...\n- :thinking: I’m looking for help with ...\n- :speech_balloon: Ask me about ...\n- :mailbox: How to reach me: ...\n- :smile: Pronouns: ...\n- :zap: Fun fact: ...\n-->\n\n[![1020317774\'s github stats](https://github-readme-stats.vercel.app/api?username=1020317774&show_icons=true&count_private=true)](https://github.com/1020317774)\n\n[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=1020317774&layout=compact)](https://github.com/1020317774)\n---------\n\n> 作者：王一晨\n> github：[https://github.com/1020317774](https://github.com/1020317774)\n\n## 技术栈\n\n- [x] SpringBoot 2.X\n- [x] Mysql 8.X\n- [x] Mybatis\n- [x] MybatisPlus\n- [x] Redis\n- [x] Jwt\n- [x] FastJson\n- [x] Hutool\n- [x] Lombok\n- [ ] ElasticSearch\n\n……\n\n## 安装指导\n\n- 克隆\n\n```java\ngit clone https://github.com/1020317774/rhapsody-admin.git\n```\n\n- 修改`application.yml`选择环境\n- 修改多环境配置中的redis参数和数据库\n- 启动`BootApplication`\n- 访问[`http://127.0.0.1:10000`](http://127.0.0.1:10000)\n\n', '1349290158897311745', 0, 0, 45, b'1', b'1', 0, '2020-12-01 16:54:34', '2020-12-01 17:05:00');
-INSERT INTO `bms_post` VALUES ('1349631541260595202', '权限部分 OK', '1. 创建 ok\n2. 修改 ok\n3. 删除 ok\n\n', '1349290158897311745', 0, 0, 17, b'0', b'0', 0, '2021-01-14 16:16:49', '2021-01-14 16:18:53');
-INSERT INTO `bms_post` VALUES ('1333676096156528641', '测试', '测试\n\n', '1349290158897311745', 0, 0, 38, b'0', b'0', 0, '2020-12-01 15:35:34', NULL);
-INSERT INTO `bms_post` VALUES ('1332681213400817665', '聚合查询并统计', '* [x] SQL：\n\n```sql\nSELECT s.*,\nCOUNT(t.id) AS topics\nFROM section s\nLEFT JOIN topic t\nON s.id = t.section_id\nGROUP BY s.title\n```\n\n', '1349290158897311745', 0, 0, 55, b'0', b'0', 1, '2020-11-28 21:42:16', '2020-11-29 15:00:42');
-INSERT INTO `bms_post` VALUES ('1335149981733449729', '视频嵌入', ':+1:\n\n[https://www.bilibili.com/video/BV1w64y1f7w3](https://www.bilibili.com/video/BV1w64y1f7w3)\n\n[1](https://www.bilibili.com/video/BV1tp4y1x72w)\n\n```\n.vditor-reset pre > code\n```\n\n```\npublic class HelloWorld {\n\npublic static void main(String[] args) {\n    System.out.println(\"Hello World!\");\n}\n}\n```\n\n', '1349290158897311745', 0, 0, 41, b'0', b'0', 0, '2020-12-05 17:12:16', '2021-01-14 13:06:16');
+INSERT INTO `bms_post` VALUES ('1333447953558765569', '1', '12\n2\n\n', '1349290158897311745', 0, 0, 77, b'0', b'0', 0, '2020-12-01 00:29:01', '2020-12-03 23:56:51', '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1349362401438392322', '2021 健康，快乐', '2021的`FLAG`\n\n1. 技能进步\n2. 没有烦恼\n3. 发财 :smile:\n\n', '1349290158897311745', 0, 0, 21, b'0', b'0', 0, '2021-01-13 22:27:21', '2021-01-14 17:30:13', '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1334481725322297346', 'hello，spring-security', ':hibiscus: spring-security\n\n', '1349290158897311745', 0, 0, 46, b'0', b'0', 0, '2020-12-03 20:56:51', NULL,'/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1332650453142827009', '哈哈哈，helloworld', '这是第一篇哦\n\n> hi :handshake: 你好\n\n`hello world`\n\n:+1: 很好\n', '1349290158897311745', 0, 0, 29, b'0', b'0', 1, '2020-11-28 19:40:02', '2020-11-28 19:46:39', '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1333432347031646209', '哈哈哈，换了个dark主题', '主题更换为Dark\n\n', '1349290158897311745', 0, 0, 6, b'0', b'0', 0, '2020-11-30 23:27:00', NULL, '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1333668258587750401', '嘿嘿，测试一下啊', '大家好\n`Hello everyone!`\n\n\n\n', '1349290158897311745', 0, 0, 7, b'0', b'0', 0, '2020-12-01 15:04:26', '2020-12-01 16:49:14', '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1332682473151635458', '我要发财', '2021 冲冲冲！！！\n\n', '1349290158897311745', 0, 0, 94, b'0', b'0', 2, '2020-11-28 21:47:16', '2020-11-30 19:40:22', '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1333695976536748034', '最新版本介绍，同步更新！', '<p align=center>一款基于SpringBoot构建的智慧社区系统</p>\n\n<p align=center>\n<a href=\"https://github.com/1020317774/rhapsody-admin/stargazers\"><img alt=\"GitHub release\" src=\"https://img.shields.io/github/release/1020317774/rhapsody-admin?style=flat-square\"></a>\n<a href=\"https://github.com/1020317774/rhapsody-admin/blob/main/LICENSE\"><img alt=\"GitHub license\" src=\"https://img.shields.io/github/license/1020317774/rhapsody-admin\"></a>\n</p>\n\n### Hi there :wave:\n\n<!--\n**1020317774/1020317774** is a :sparkles: _special_ :sparkles: repository because its `README.md` (this file) appears on your GitHub profile.\n\nHere are some ideas to get you started:\n\n- :telescope: I’m currently working on ...\n- :seedling: I’m currently learning ...\n- :dancers: I’m looking to collaborate on ...\n- :thinking: I’m looking for help with ...\n- :speech_balloon: Ask me about ...\n- :mailbox: How to reach me: ...\n- :smile: Pronouns: ...\n- :zap: Fun fact: ...\n-->\n\n[![1020317774\'s github stats](https://github-readme-stats.vercel.app/api?username=1020317774&show_icons=true&count_private=true)](https://github.com/1020317774)\n\n[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=1020317774&layout=compact)](https://github.com/1020317774)\n---------\n\n> 作者：王一晨\n> github：[https://github.com/1020317774](https://github.com/1020317774)\n\n## 技术栈\n\n- [x] SpringBoot 2.X\n- [x] Mysql 8.X\n- [x] Mybatis\n- [x] MybatisPlus\n- [x] Redis\n- [x] Jwt\n- [x] FastJson\n- [x] Hutool\n- [x] Lombok\n- [ ] ElasticSearch\n\n……\n\n## 安装指导\n\n- 克隆\n\n```java\ngit clone https://github.com/1020317774/rhapsody-admin.git\n```\n\n- 修改`application.yml`选择环境\n- 修改多环境配置中的redis参数和数据库\n- 启动`BootApplication`\n- 访问[`http://127.0.0.1:10000`](http://127.0.0.1:10000)\n\n', '1349290158897311745', 0, 0, 45, b'1', b'1', 0, '2020-12-01 16:54:34', '2020-12-01 17:05:00', '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1349631541260595202', '权限部分 OK', '1. 创建 ok\n2. 修改 ok\n3. 删除 ok\n\n', '1349290158897311745', 0, 0, 17, b'0', b'0', 0, '2021-01-14 16:16:49', '2021-01-14 16:18:53', '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1333676096156528641', '测试', '测试\n\n', '1349290158897311745', 0, 0, 38, b'0', b'0', 0, '2020-12-01 15:35:34', NULL, '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1332681213400817665', '聚合查询并统计', '* [x] SQL：\n\n```sql\nSELECT s.*,\nCOUNT(t.id) AS topics\nFROM section s\nLEFT JOIN topic t\nON s.id = t.section_id\nGROUP BY s.title\n```\n\n', '1349290158897311745', 0, 0, 55, b'0', b'0', 1, '2020-11-28 21:42:16', '2020-11-29 15:00:42', '/img/cover/fu-cloud-org.jpg');
+INSERT INTO `bms_post` VALUES ('1335149981733449729', '视频嵌入', ':+1:\n\n[https://www.bilibili.com/video/BV1w64y1f7w3](https://www.bilibili.com/video/BV1w64y1f7w3)\n\n[1](https://www.bilibili.com/video/BV1tp4y1x72w)\n\n```\n.vditor-reset pre > code\n```\n\n```\npublic class HelloWorld {\n\npublic static void main(String[] args) {\n    System.out.println(\"Hello World!\");\n}\n}\n```\n\n', '1349290158897311745', 0, 0, 41, b'0', b'0', 0, '2020-12-05 17:12:16', '2021-01-14 13:06:16', '/img/cover/fu-cloud-org.jpg');
 
 
 -- ----------------------------
@@ -97,7 +98,7 @@ CREATE TABLE `bms_comment`  (
                                 `id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键',
                                 `content` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '内容',
                                 `user_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '作者ID',
-                                `topic_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'topic_id',
+                                `post_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '帖子id',
                                 `create_time` datetime NOT NULL COMMENT '发布时间',
                                 `modify_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
                                 PRIMARY KEY (`id`) USING BTREE
@@ -110,7 +111,7 @@ DROP TABLE IF EXISTS `bms_tag`;
 CREATE TABLE `bms_tag`  (
                             `id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标签ID',
                             `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '标签',
-                            `topic_count` int NOT NULL DEFAULT 0 COMMENT '关联话题',
+                            `post_count` int NOT NULL DEFAULT 0 COMMENT '关联帖子数',
                             PRIMARY KEY (`id`) USING BTREE,
                             UNIQUE INDEX `name`(`name`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '标签表' ROW_FORMAT = DYNAMIC;
@@ -141,11 +142,11 @@ DROP TABLE IF EXISTS `bms_post_tag`;
 CREATE TABLE `bms_post_tag`  (
                                  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
                                  `tag_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标签ID',
-                                 `topic_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '话题ID',
+                                 `post_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '帖子id',
                                  PRIMARY KEY (`id`) USING BTREE,
                                  INDEX `tag_id`(`tag_id`) USING BTREE,
-                                 INDEX `topic_id`(`topic_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '话题-标签 中间表' ROW_FORMAT = DYNAMIC;
+                                 INDEX `post_id`(`post_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '帖子-标签 中间表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of bms_post_tag
@@ -182,9 +183,16 @@ CREATE TABLE `bms_promotion`  (
 -- ----------------------------
 -- Records of bms_promotion
 -- ----------------------------
-INSERT INTO `bms_promotion` VALUES (1, '硫没有正七价', 'https://weapons.schwefel.me/', '硫没有正七价');
-INSERT INTO `bms_promotion` VALUES (2, '并发编程网', 'https://juejin.cn/', '并发编程网');
-INSERT INTO `bms_promotion` VALUES (3, '掘金', 'https://juejin.cn/', '掘金');
+INSERT INTO `bms_promotion` VALUES (1, 'Attensist', 'https://blog.csdn.net/m0_52119324', 'Attensist');
+INSERT INTO `bms_promotion` VALUES (2, 'yang三毛', 'https://blog.csdn.net/y15659037739l', 'yang三毛');
+INSERT INTO `bms_promotion` VALUES (3, 'xilili24', 'https://blog.csdn.net/m0_62111261', 'xilili24');
+INSERT INTO `bms_promotion` VALUES (4, 'Yeyeahl', 'https://blog.csdn.net/m0_62064405', 'Yeyeahl');
+INSERT INTO `bms_promotion` VALUES (5, 'Jin4869', 'https://blog.csdn.net/jin4869', 'Jin4869');
+INSERT INTO `bms_promotion` VALUES (6, '今天什么歌', 'https://blog.csdn.net/weixin_55703999', '今天什么歌');
+INSERT INTO `bms_promotion` VALUES (7, 'xzy', 'https://blog.csdn.net/t_eddy', 'xzy');
+INSERT INTO `bms_promotion` VALUES (8, 'dofson', 'https://blog.csdn.net/hhwzs', 'dofson');
+INSERT INTO `bms_promotion` VALUES (9, '安康', 'https://blog.csdn.net/weixin_51744713', '安康');
+INSERT INTO `bms_promotion` VALUES (10, '硫没有正七价', 'https://weapons.schwefel.me/', '硫没有正七价');
 
 
 -- ----------------------------
@@ -233,7 +241,7 @@ CREATE TABLE `ums_user`  (
                              `username` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '用户名',
                              `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户昵称',
                              `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '密码',
-                             `avatar` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像',
+                             `avatar` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '/img/avatar/fu-cloud-icon.png' COMMENT '头像',
                              `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
                              `mobile` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机',
                              `score` int NOT NULL DEFAULT 0 COMMENT '积分',
@@ -253,7 +261,7 @@ CREATE TABLE `ums_user`  (
 -- ----------------------------
 -- Records of ums_user
 -- ----------------------------
-INSERT INTO `ums_user` VALUES ('1349290158897311745', 'admin', 'admin', '$2a$10$8qx711TBg/2hxfL7N.sxf.0ROMhR/iuPhQx33IFqGd7PLgt5nGJTO', 'https://s3.ax1x.com/2020/12/01/DfHNo4.jpg', '23456@qq.com', NULL, 2, '', '自由职业者', b'1', b'1', NULL, '2021-01-13 17:40:17', NULL);
-INSERT INTO `ums_user` VALUES ('1349618748226658305', 'zhangsan', 'zhangsan', '$2a$10$7K3yYv8sMV5Xsc2facXTcuyDo8JQ4FJHvjZ7qtWYcJdei3Q6Fvqdm', 'https://s3.ax1x.com/2020/12/01/DfHNo4.jpg', '23456@qq.com', NULL, 0, '', '自由职业者', b'1', b'1', NULL, '2021-01-14 15:25:59', NULL);
+INSERT INTO `ums_user` VALUES ('1349290158897311745', 'admin', 'admin', '$2a$10$8qx711TBg/2hxfL7N.sxf.0ROMhR/iuPhQx33IFqGd7PLgt5nGJTO', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 2, '', '自由职业者', b'1', b'1', NULL, '2021-01-13 17:40:17', NULL);
+INSERT INTO `ums_user` VALUES ('1349618748226658305', 'zhangsan', 'zhangsan', '$2a$10$7K3yYv8sMV5Xsc2facXTcuyDo8JQ4FJHvjZ7qtWYcJdei3Q6Fvqdm', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 0, '', '自由职业者', b'1', b'1', NULL, '2021-01-14 15:25:59', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
