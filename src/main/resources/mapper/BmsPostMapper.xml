@@ -15,21 +15,23 @@
         <result column="username" property="username"/>
         <result column="alias" property="alias"/>
         <result column="cover" property="cover"/>
+        <result column="avatar" property="avatar"/>
+        <result column="summary" property="summary"/>
     </resultMap>
 
     <select id="selectListAndPage" resultMap="postVO">
         SELECT
-        t.id,t.title,t.user_id,t.comments,
+        t.id,t.title,t.user_id,t.comments,t.summary,
         t.view,t.collects,t.top,t.essence,
         t.create_time ,t.modify_time ,t.cover,
-        u.username,u.alias
+        u.username,u.alias,u.avatar
         FROM bms_post t
         LEFT JOIN ums_user u
         ON t.user_id = u.id
         <where>
             <if test="tab == 'hot'">
                 date(t.create_time) &lt;= date_add(curdate(), interval 1 day)
-                and date(t.create_time) &gt;= date_sub(curdate(), interval 7 day)
+                and date(t.create_time) &gt;= date_sub(curdate(), interval 60 day)
             </if>
         </where>
         <if test="tab != 'hot'">

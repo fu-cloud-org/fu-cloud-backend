@@ -75,4 +75,8 @@ public class PostVO implements Serializable {
      * 封面
      */
     private String cover;
+    /**
+     * 简介
+     */
+    private String summary;
 }

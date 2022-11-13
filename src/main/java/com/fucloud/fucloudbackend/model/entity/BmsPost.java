@@ -38,6 +38,13 @@ public class BmsPost implements Serializable {
     private String content;
 
     /**
+     * 简介
+     */
+    @NotBlank(message = "简介不可以为空")
+    @TableField("`summary`")
+    private String summary;
+
+    /**
      * 作者ID
      */
     @TableField("user_id")
@@ -102,7 +109,7 @@ public class BmsPost implements Serializable {
      */
     @Builder.Default
     @TableField("cover")
-    private String cover = "/img/cover/fu-cloud-org.jpg";
+    private String cover = "/img/cover/fu-cloud-org.png";
 }
 
 
