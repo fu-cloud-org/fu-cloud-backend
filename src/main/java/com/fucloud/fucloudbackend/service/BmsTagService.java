@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.fucloud.fucloudbackend.model.entity.BmsPost;
 import com.fucloud.fucloudbackend.model.entity.BmsTag;
 
+import java.util.List;
+
 public interface BmsTagService extends IService<BmsTag> {
 
     /**
@@ -15,5 +17,13 @@ public interface BmsTagService extends IService<BmsTag> {
      * @return
      */
     Page<BmsPost> selectPostsByTagId(Page<BmsPost> postPage, String id);
+
+    /**
+     * 插入标签
+     *
+     * @param tags
+     * @return
+     */
+    List<BmsTag> insertTags(List<String> tags);
 
 }

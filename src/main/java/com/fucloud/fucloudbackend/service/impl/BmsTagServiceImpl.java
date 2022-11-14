@@ -12,6 +12,8 @@ import com.fucloud.fucloudbackend.service.BmsTagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -34,5 +36,22 @@ public class BmsTagServiceImpl
         wrapper.in(BmsPost::getId, ids);
 
         return bmsPostService.page(postPage, wrapper);
+    }
+
+    @Override
+    public List<BmsTag> insertTags(List<String> tags) {
+        List<BmsTag> tagList = new ArrayList<>();
+        for (String tagName : tags) {
+            BmsTag tag = this.baseMapper.selectOne(new LambdaQueryWrapper<BmsTag>().eq(BmsTag::getName, tagName));
+            if (tag == null) {
+                tag = BmsTag.builder().name(tagName).build();
+                this.baseMapper.insert(tag);
+            } else {
+                tag.setPostCount(tag.getPostCount() + 1);
+                this.baseMapper.updateById(tag);
+            }
+            tagList.add(tag);
+        }
+        return tagList;
     }
 }
