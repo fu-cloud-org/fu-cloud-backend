@@ -69,8 +69,8 @@ public class BmsPostServiceImpl extends
     @Override
     @Transactional(rollbackFor = Exception.class)
     public BmsPost release(ReleasePostDTO dto, UmsUser principal) {
-        BmsPost post1 = this.baseMapper.selectOne(new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getTitle, dto.getTitle()));
-        Assert.isNull(post1, "话题已存在，请修改");
+//        BmsPost post1 = this.baseMapper.selectOne(new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getTitle, dto.getTitle()));
+//        Assert.isNull(post1, "话题已存在，请修改");
 
         // 封装
         BmsPost post = BmsPost.builder()

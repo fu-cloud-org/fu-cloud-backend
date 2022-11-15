@@ -15,7 +15,7 @@ import java.util.Date;
 @TableName("bms_post")
 @AllArgsConstructor
 @NoArgsConstructor
-public class BmsPost implements Serializable {
+public class  BmsPost implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

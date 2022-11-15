@@ -31,7 +31,7 @@ public class ReleasePostDTO implements Serializable {
     private List<String> tags;
 
     /**
-     * 封闭
+     * 封面
      */
     private String cover = "/img/cover/fu-cloud-org.png";
 
