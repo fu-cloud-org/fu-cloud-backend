@@ -74,6 +74,7 @@ public class BmsPostServiceImpl extends
 
         // 封装
         BmsPost post = BmsPost.builder()
+                .cover(dto.getCover())
                 .summary(dto.getSummary())
                 .userId(principal.getId())
                 .title(dto.getTitle())
