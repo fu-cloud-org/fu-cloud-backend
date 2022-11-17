@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.fucloud.fucloudbackend.model.dto.LoginDTO;
 import com.fucloud.fucloudbackend.model.dto.RegisterDTO;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
+import com.fucloud.fucloudbackend.model.vo.ProfileVO;
 
 public interface UmsUserService extends IService<UmsUser> {
 
@@ -34,6 +35,6 @@ public interface UmsUserService extends IService<UmsUser> {
      * @param id 用户ID
      * @return
      */
-//    ProfileVO getUserProfile(String id);
+    ProfileVO getUserProfile(String id);
 
 }

@@ -1,6 +1,7 @@
 package com.fucloud.fucloudbackend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fucloud.fucloudbackend.dao.BmsPostMapper;
@@ -12,6 +13,7 @@ import com.fucloud.fucloudbackend.model.entity.BmsPostTag;
 import com.fucloud.fucloudbackend.model.entity.BmsTag;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.model.vo.PostVO;
+import com.fucloud.fucloudbackend.model.vo.ProfileVO;
 import com.fucloud.fucloudbackend.service.BmsPostService;
 import com.fucloud.fucloudbackend.service.BmsPostTagService;
 import com.fucloud.fucloudbackend.service.BmsTagService;
@@ -25,8 +27,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -96,5 +97,30 @@ public class BmsPostServiceImpl extends
         }
 
         return post;
+    }
+
+    @Override
+    public Map<String, Object> postView(String id) {
+        Map<String, Object> map = new HashMap<>(16);
+        BmsPost post = this.baseMapper.selectById(id);
+        Assert.notNull(post,"帖子不存在或已被作者删除");
+
+        post.setView(post.getView()+1);
+        this.baseMapper.updateById(post);
+
+        post.setContent(EmojiParser.parseToUnicode(post.getContent()));
+        map.put("post", post);
+
+        QueryWrapper<BmsPostTag> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(BmsPostTag::getPostId, post.getId());
+        Set<String> set = new HashSet<>();
+        for(BmsPostTag postTag : bmsPostTagService.list(wrapper))
+            set.add(postTag.getTagId());
+        map.put("tags", set);
+
+        ProfileVO userProfile = umsUserService.getUserProfile(post.getUserId());
+        map.put("user", userProfile);
+
+        return map;
     }
 }

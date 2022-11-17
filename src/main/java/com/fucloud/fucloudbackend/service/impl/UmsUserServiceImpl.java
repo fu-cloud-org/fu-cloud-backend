@@ -3,22 +3,33 @@ package com.fucloud.fucloudbackend.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fucloud.fucloudbackend.common.exception.AssertsApi;
+import com.fucloud.fucloudbackend.dao.BmsPostMapper;
 import com.fucloud.fucloudbackend.dao.UmsUserMapper;
 import com.fucloud.fucloudbackend.jwt.JwtUtil;
 import com.fucloud.fucloudbackend.model.dto.LoginDTO;
 import com.fucloud.fucloudbackend.model.dto.RegisterDTO;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
+import com.fucloud.fucloudbackend.model.vo.ProfileVO;
 import com.fucloud.fucloudbackend.service.UmsUserService;
 import com.fucloud.fucloudbackend.utils.MD5Utils;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import java.util.Date;
 
+@Slf4j
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class UmsUserServiceImpl
         extends ServiceImpl<UmsUserMapper, UmsUser>
         implements UmsUserService {
+
+    @Autowired
+    private BmsPostMapper bmsPostMapper;
 
     @Override
     public UmsUser executeRegister(RegisterDTO dto) {
@@ -63,5 +74,13 @@ public class UmsUserServiceImpl
             log.warn("用户不存在or密码验证失败=======>"+ dto.getUsername());
         }
         return token;
+    }
+
+    @Override
+    public ProfileVO getUserProfile(String id) {
+        ProfileVO profileVO = new ProfileVO();
+        UmsUser umsUser = baseMapper.selectById(id);
+        BeanUtils.copyProperties(umsUser, profileVO);
+        return profileVO;
     }
 }

@@ -7,6 +7,8 @@ import com.fucloud.fucloudbackend.model.entity.BmsPost;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.model.vo.PostVO;
 
+import java.util.Map;
+
 public interface BmsPostService extends IService<BmsPost> {
 
     /**
@@ -26,5 +28,14 @@ public interface BmsPostService extends IService<BmsPost> {
      * @return
      */
     BmsPost release(ReleasePostDTO dto, UmsUser principal);
+
+    /**
+     * 查看话题详情
+     *
+     * @param id
+     * @return
+     */
+
+    Map<String, Object> postView(String id);
 
 }

@@ -5,6 +5,11 @@ web:
   domain: http://localhost
 
 spring:
+  devtools:
+    restart:
+      additional-paths: src/main/java
+      enabled: true
+
   mvc:
     static-path-pattern: /**
   thymeleaf:

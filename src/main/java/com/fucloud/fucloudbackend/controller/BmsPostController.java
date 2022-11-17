@@ -16,6 +16,7 @@ import javax.annotation.Resource;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import static com.fucloud.fucloudbackend.jwt.JwtUtil.USER_NAME;
 
@@ -65,7 +66,12 @@ public class BmsPostController extends BaseController {
         } catch (IOException e) {
             return ResultApi.failed("上传失败");
         }
+    }
 
+    @GetMapping()
+    public ResultApi<Map<String, Object>> view(@RequestParam("id") String id){
+        Map<String, Object> map = bmsPostService.postView(id);
+        return ResultApi.success(map);
     }
 
 }

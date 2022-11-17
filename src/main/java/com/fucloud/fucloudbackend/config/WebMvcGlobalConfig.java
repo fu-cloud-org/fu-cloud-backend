@@ -2,6 +2,7 @@ package com.fucloud.fucloudbackend.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
@@ -28,19 +29,20 @@ public class WebMvcGlobalConfig implements WebMvcConfigurer {
                 .exposedHeaders("*");
     }
 
-//    @Bean
-//    public CorsFilter corsFilter() {
-//        CorsConfiguration config = new CorsConfiguration();
-//        //允许所有域名进行跨域调用
-//        config.addAllowedOriginPattern("*");
-//        //允许跨越发送cookie
-//        config.setAllowCredentials(true);
-//        //放行全部原始头信息
-//        config.addAllowedHeader("*");
-//        //允许所有请求方法跨域调用
-//        config.addAllowedMethod("*");
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", config);
-//        return new CorsFilter(source);
-//    }
+    // static resources path
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+        String PROJECT_PATH = System.getProperty("user.dir");
+
+        // cover
+        registry.addResourceHandler("/img/cover/**")
+                .addResourceLocations("file:" + PROJECT_PATH + "/src/main/resources/static/img/cover/");
+
+        // avatar
+        registry.addResourceHandler("/img/avatar/**")
+                .addResourceLocations("file:" + PROJECT_PATH + "/src/main/resources/static/img/avatar/");
+    }
+
 }
