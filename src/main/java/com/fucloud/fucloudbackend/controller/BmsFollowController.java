@@ -3,6 +3,7 @@ package com.fucloud.fucloudbackend.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.fucloud.fucloudbackend.common.api.ResultApi;
 import com.fucloud.fucloudbackend.common.exception.AssertsApi;
+import com.fucloud.fucloudbackend.model.entity.BmsFollow;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.service.BmsFollowService;
 import com.fucloud.fucloudbackend.service.UmsUserService;
@@ -66,13 +67,13 @@ public class BmsFollowController extends BaseController {
 
     @GetMapping("/validate/{postUserId}")
     public ResultApi<Map<String, Object>> isFollow(@RequestHeader(value = USER_NAME) String userName
-            , @PathVariable("postUserId") String topicUserId) {
+            , @PathVariable("postUserId") String postUserId) {
         UmsUser umsUser = umsUserService.getUserByUsername(userName);
         Map<String, Object> map = new HashMap<>(16);
         map.put("hasFollow", false);
         if (!ObjectUtils.isEmpty(umsUser)) {
             BmsFollow one = bmsFollowService.getOne(new LambdaQueryWrapper<BmsFollow>()
-                    .eq(BmsFollow::getParentId, topicUserId)
+                    .eq(BmsFollow::getParentId, postUserId)
                     .eq(BmsFollow::getFollowerId, umsUser.getId()));
             if (!ObjectUtils.isEmpty(one)) {
                 map.put("hasFollow", true);

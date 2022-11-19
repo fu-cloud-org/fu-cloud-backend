@@ -5,6 +5,7 @@ import com.fucloud.fucloudbackend.common.api.ResultApi;
 import com.fucloud.fucloudbackend.model.dto.LoginDTO;
 import com.fucloud.fucloudbackend.model.dto.RegisterDTO;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
+import com.fucloud.fucloudbackend.model.vo.ProfileVO;
 import com.fucloud.fucloudbackend.service.UmsUserService;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
@@ -82,6 +83,13 @@ public class UmsUserController extends BaseController {
         } catch (IOException e){
             return ResultApi.failed("更新失败");
         }
+    }
+
+
+    @GetMapping("/profile")
+    public ResultApi<ProfileVO> getProfile(@RequestParam("userId") String userId) {
+        ProfileVO profileVO = umsUserService.getUserProfile(userId);
+        return ResultApi.success(profileVO);
     }
 
 
