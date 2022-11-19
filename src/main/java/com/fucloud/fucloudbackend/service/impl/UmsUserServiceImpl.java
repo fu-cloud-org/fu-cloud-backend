@@ -88,8 +88,8 @@ public class UmsUserServiceImpl
         BeanUtils.copyProperties(umsUser, profileVO);
 
         Long postCount = bmsPostMapper.selectCount(new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, id));
-        Long fansCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getParentId, id));
-        Long followerCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getFollowerId, id));
+        Long fansCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getFollowerId, id));
+        Long followerCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getParentId, id));
 
         profileVO.setPostCount(postCount);
         profileVO.setFansCount(fansCount);
