@@ -28,17 +28,17 @@ public class ProfileVO {
     /**
      * 关注数
      */
-    private Integer followCount;
+    private Long fansCount;
 
     /**
      * 关注者数
      */
-    private Integer followerCount;
+    private Long followerCount;
 
     /**
      * 文章数
      */
-    private Integer topicCount;
+    private Long postCount;
 
     /**
      * 专栏数

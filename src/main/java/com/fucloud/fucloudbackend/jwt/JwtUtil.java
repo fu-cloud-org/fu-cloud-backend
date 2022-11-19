@@ -59,7 +59,11 @@ public class JwtUtil {
         @Override
         public Enumeration<String> getHeaders(String name) {
             if (claims != null && claims.containsKey(name)) {
-                return Collections.enumeration(Collections.singletonList(claims.get(name)));
+                return Collections.enumeration(Arrays.asList(claims.get(name)));
+
+                // 这里我记一辈子
+
+//                return Collections.enumeration(Collections.singletonList(claims.get(name)));
             }
             return super.getHeaders(name);
         }

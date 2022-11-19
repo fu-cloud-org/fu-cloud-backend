@@ -3,11 +3,14 @@ package com.fucloud.fucloudbackend.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fucloud.fucloudbackend.common.exception.AssertsApi;
+import com.fucloud.fucloudbackend.controller.BmsFollow;
+import com.fucloud.fucloudbackend.dao.BmsFollowMapper;
 import com.fucloud.fucloudbackend.dao.BmsPostMapper;
 import com.fucloud.fucloudbackend.dao.UmsUserMapper;
 import com.fucloud.fucloudbackend.jwt.JwtUtil;
 import com.fucloud.fucloudbackend.model.dto.LoginDTO;
 import com.fucloud.fucloudbackend.model.dto.RegisterDTO;
+import com.fucloud.fucloudbackend.model.entity.BmsPost;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.model.vo.ProfileVO;
 import com.fucloud.fucloudbackend.service.UmsUserService;
@@ -30,6 +33,8 @@ public class UmsUserServiceImpl
 
     @Autowired
     private BmsPostMapper bmsPostMapper;
+    @Autowired
+    private BmsFollowMapper bmsFollowMapper;
 
     @Override
     public UmsUser executeRegister(RegisterDTO dto) {
@@ -81,6 +86,15 @@ public class UmsUserServiceImpl
         ProfileVO profileVO = new ProfileVO();
         UmsUser umsUser = baseMapper.selectById(id);
         BeanUtils.copyProperties(umsUser, profileVO);
+
+        Long postCount = bmsPostMapper.selectCount(new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, id));
+        Long fansCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getParentId, id));
+        Long followerCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getFollowerId, id));
+
+        profileVO.setPostCount(postCount);
+        profileVO.setFansCount(fansCount);
+        profileVO.setFollowerCount(followerCount);
+
         return profileVO;
     }
 }
