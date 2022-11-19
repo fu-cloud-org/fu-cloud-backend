@@ -16,6 +16,7 @@ import javax.annotation.Resource;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import static com.fucloud.fucloudbackend.jwt.JwtUtil.USER_NAME;
@@ -72,6 +73,12 @@ public class BmsPostController extends BaseController {
     public ResultApi<Map<String, Object>> view(@RequestParam("id") String id){
         Map<String, Object> map = bmsPostService.postView(id);
         return ResultApi.success(map);
+    }
+
+    @GetMapping("/recommend")
+    public ResultApi<List<BmsPost>> getRecommend(@RequestParam("postId") String id) {
+        List<BmsPost> post = bmsPostService.getRecommend(id);
+        return ResultApi.success(post);
     }
 
 }

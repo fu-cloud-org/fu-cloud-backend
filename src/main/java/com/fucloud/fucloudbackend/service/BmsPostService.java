@@ -7,6 +7,7 @@ import com.fucloud.fucloudbackend.model.entity.BmsPost;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.model.vo.PostVO;
 
+import java.util.List;
 import java.util.Map;
 
 public interface BmsPostService extends IService<BmsPost> {
@@ -37,5 +38,13 @@ public interface BmsPostService extends IService<BmsPost> {
      */
 
     Map<String, Object> postView(String id);
+
+    /**
+     * 获取随机推荐10篇
+     *
+     * @param id
+     * @return
+     */
+    List<BmsPost> getRecommend(String id);
 
 }

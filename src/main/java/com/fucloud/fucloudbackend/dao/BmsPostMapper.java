@@ -7,6 +7,8 @@ import com.fucloud.fucloudbackend.model.vo.PostVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface BmsPostMapper extends BaseMapper<BmsPost> {
 
@@ -19,5 +21,13 @@ public interface BmsPostMapper extends BaseMapper<BmsPost> {
      * @return
      */
     Page<PostVO> selectListAndPage(@Param("page") Page<PostVO> page, @Param("tab") String tab);
+
+    /**
+     * 获取详情页推荐
+     *
+     * @param id
+     * @return
+     */
+    List<BmsPost> selectRecommend(@Param("id") String id);
 
 }
