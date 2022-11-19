@@ -1,5 +1,6 @@
 package com.fucloud.fucloudbackend.controller;
 
+import com.fucloud.fucloudbackend.common.Constants;
 import com.fucloud.fucloudbackend.common.api.ResultApi;
 import com.fucloud.fucloudbackend.model.dto.LoginDTO;
 import com.fucloud.fucloudbackend.model.dto.RegisterDTO;
@@ -8,9 +9,12 @@ import com.fucloud.fucloudbackend.service.UmsUserService;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +61,27 @@ public class UmsUserController extends BaseController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ResultApi<Object> logOut() {
         return ResultApi.success(null, "退出登陆成功");
+    }
+
+    @RequestMapping(value = "/updateAvatar", method = RequestMethod.POST)
+    public Object updateAvatar(@RequestParam(value="userName") String userName,
+                               @RequestParam("file") MultipartFile avatarFile){
+        String fileName = System.currentTimeMillis() + avatarFile.getOriginalFilename();
+        String filePath = Constants.PROJECT_PATH +System.getProperty("file.separator")
+                + "src" + System.getProperty("file.separator") + "main" + System.getProperty("file.separator") +
+                "resources" + System.getProperty("file.separator") + "static" + System.getProperty("file.separator") + "img"
+                + System.getProperty("file.separator") + "avatar" + System.getProperty("file.separator") + userName;
+        File file1 = new File(filePath);
+        if(!file1.exists())
+            file1.mkdirs();
+        File dest = new File(filePath + System.getProperty("file.separator") + fileName);
+        String imgPath = "/img/cover/" + userName + '/' + fileName;
+        try {
+            avatarFile.transferTo(dest);
+            return ResultApi.success("更新成功");
+        } catch (IOException e){
+            return ResultApi.failed("更新失败");
+        }
     }
 
 
