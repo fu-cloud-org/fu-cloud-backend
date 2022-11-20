@@ -28,8 +28,8 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("福云项目--接口文档")
-                .description("基于swagger构建RestFul接口")
-                .version("1.0")
+                .description("")
+                .version("2.0")
                 .build();
     }
 
