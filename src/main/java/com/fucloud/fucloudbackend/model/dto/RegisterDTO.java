@@ -5,9 +5,12 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 @Data
-public class RegisterDTO {
+public class RegisterDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @NotEmpty(message = "请输入账号")
     @Length(min = 2, max = 15, message = "长度在2-15")
