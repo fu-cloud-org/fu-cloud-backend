@@ -32,9 +32,9 @@ public class BmsCommentController {
     }
 
     @PostMapping("/create")
-    public ResultApi<BmsComment> createComment(@RequestHeader(value = USER_NAME) String username,
+    public ResultApi<BmsComment> createComment(@RequestParam(value = "userId") String userId,
                                                @RequestBody CommentDTO dto) {
-        UmsUser user = umsUserService.getUserByUsername(username);
+        UmsUser user = umsUserService.getById(userId);
         if (ObjectUtils.isEmpty(user)) {
             return ResultApi.failed("User not found");
         } else  {
