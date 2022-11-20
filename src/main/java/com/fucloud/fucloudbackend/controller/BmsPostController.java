@@ -9,13 +9,17 @@ import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.model.vo.PostVO;
 import com.fucloud.fucloudbackend.service.BmsPostService;
 import com.fucloud.fucloudbackend.service.UmsUserService;
+import com.vdurmont.emoji.EmojiParser;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -79,6 +83,26 @@ public class BmsPostController extends BaseController {
     public ResultApi<List<BmsPost>> getRecommend(@RequestParam("postId") String id) {
         List<BmsPost> post = bmsPostService.getRecommend(id);
         return ResultApi.success(post);
+    }
+
+    @PostMapping("/update")
+    public ResultApi<BmsPost> update(@RequestHeader(value = USER_NAME) String userName, @Valid @RequestBody BmsPost post) {
+        UmsUser umsUser = umsUserService.getUserByUsername(userName);
+        Assert.isTrue(umsUser.getId().equals(post.getUserId()), "非本人无权修改");
+        post.setModifyTime(new Date());
+        post.setContent(EmojiParser.parseToAliases(post.getContent()));
+        bmsPostService.updateById(post);
+        return ResultApi.success(post);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResultApi<String> delete(@RequestHeader(value = USER_NAME) String userName, @PathVariable("id") String id) {
+        UmsUser umsUser = umsUserService.getUserByUsername(userName);
+        BmsPost byId = bmsPostService.getById(id);
+        Assert.notNull(byId, "来晚一步，话题已不存在");
+        Assert.isTrue(byId.getUserId().equals(umsUser.getId()), "你为什么可以删除别人的话题？？？");
+        bmsPostService.removeById(id);
+        return ResultApi.success(null,"删除成功");
     }
 
 }
