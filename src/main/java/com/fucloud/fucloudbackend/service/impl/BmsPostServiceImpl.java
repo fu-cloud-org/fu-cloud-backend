@@ -115,7 +115,7 @@ public class BmsPostServiceImpl extends
         wrapper.lambda().eq(BmsPostTag::getPostId, post.getId());
         Set<String> set = new HashSet<>();
         for(BmsPostTag postTag : bmsPostTagService.list(wrapper))
-            set.add(postTag.getTagId());
+            set.add(bmsTagMapper.selectById(postTag.getTagId()).getName());
         map.put("tags", set);
 
         ProfileVO userProfile = umsUserService.getUserProfile(post.getUserId());
