@@ -53,6 +53,7 @@
     <select id="searchByKey" resultMap="postVO">
         SELECT t.id,
                t.cover,
+               t.summary,
                 t.title,
                 t.user_id,
                 t.comments,
@@ -74,6 +75,10 @@
                 or t.title like CONCAT('${keyword}','%')
                 or t.title like CONCAT('%','${keyword}','%')
                 or t.title = #{keyword}
+                or t.summary like CONCAT('%','${keyword}')
+                or t.summary like CONCAT('${keyword}','%')
+                or t.summary like CONCAT('%','${keyword}','%')
+                or t.summary = #{keyword}
             </if>
         </where>
         order by t.view desc, t.create_time desc
