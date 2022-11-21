@@ -30,4 +30,13 @@ public interface BmsPostMapper extends BaseMapper<BmsPost> {
      */
     List<BmsPost> selectRecommend(@Param("id") String id);
 
+    /**
+     * 全文检索
+     *
+     * @param page
+     * @param keyword
+     * @return
+     */
+    Page<PostVO> searchByKey(@Param("page") Page<PostVO> page, @Param("keyword") String keyword);
+
 }
