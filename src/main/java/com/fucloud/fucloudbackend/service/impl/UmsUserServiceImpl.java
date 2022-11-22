@@ -64,10 +64,17 @@ public class UmsUserServiceImpl
     }
 
     @Override
+    public UmsUser getUserByEmail(String email) {
+        return baseMapper.selectOne(new LambdaQueryWrapper<UmsUser>().eq(UmsUser::getEmail, email));
+    }
+
+    @Override
     public String executeLogin(LoginDTO dto) {
         String token = null;
         try {
-            UmsUser user = getUserByUsername(dto.getUsername());
+            UmsUser userByUsername = getUserByUsername(dto.getUsername());
+            UmsUser userByEmail = getUserByEmail(dto.getUsername());
+            UmsUser user = userByUsername == null ? userByEmail : userByUsername;
             String encodePwd = MD5Utils.getPwd(dto.getPassword());
             if(!encodePwd.equals(user.getPassword()))
             {

@@ -37,4 +37,6 @@ public interface UmsUserService extends IService<UmsUser> {
      */
     ProfileVO getUserProfile(String id);
 
+    UmsUser getUserByEmail(String email);
+
 }
