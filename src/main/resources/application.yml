@@ -9,7 +9,17 @@ spring:
     restart:
       additional-paths: src/main/java
       enabled: true
-
+  mail:
+    default-encoding: utf-8
+    host: smtp.qq.com
+    username: 1106518291@qq.com
+    password: mbotcywqjvirjbeh
+    properties:
+      mail:
+        smtp:
+          auth: true
+          enable: true
+          required: true
   mvc:
     static-path-pattern: /**
     pathmatch:
