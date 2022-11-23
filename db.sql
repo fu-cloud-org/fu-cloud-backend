@@ -247,12 +247,13 @@ CREATE TABLE `ums_user`  (
                              `mobile` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机',
                              `score` int NOT NULL DEFAULT 0 COMMENT '积分',
                              `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT 'token',
-                             `bio` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '个人简介',
+                             `dep` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '专业',
                              `active` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否激活，1：是，0：否',
                              `status` bit(1) NULL DEFAULT b'1' COMMENT '状态，1：使用，0：停用',
                              `role_id` int NULL DEFAULT NULL COMMENT '用户角色',
                              `create_time` datetime NOT NULL COMMENT '加入时间',
                              `modify_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+                             `sign` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这个用户很懒！没有留下签名' COMMENT '签名',
                              PRIMARY KEY (`id`) USING BTREE,
                              UNIQUE INDEX `user_name`(`username`) USING BTREE,
                              INDEX `user_email`(`email`) USING BTREE,
@@ -262,7 +263,7 @@ CREATE TABLE `ums_user`  (
 -- ----------------------------
 -- Records of ums_user
 -- ----------------------------
-INSERT INTO `ums_user` VALUES ('1349290158897311745', 'admin', 'admin', '$2a$10$8qx711TBg/2hxfL7N.sxf.0ROMhR/iuPhQx33IFqGd7PLgt5nGJTO', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 2, '', '自由职业者', b'1', b'1', NULL, '2021-01-13 17:40:17', NULL);
--- INSERT INTO `ums_user` VALUES ('1349618748226658305', 'zhangsan', 'zhangsan', '$2a$10$7K3yYv8sMV5Xsc2facXTcuyDo8JQ4FJHvjZ7qtWYcJdei3Q6Fvqdm', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 0, '', '自由职业者', b'1', b'1', NULL, '2021-01-14 15:25:59', NULL);
+INSERT INTO `ums_user` VALUES ('1349290158897311745', 'admin', 'admin', '$2a$10$8qx711TBg/2hxfL7N.sxf.0ROMhR/iuPhQx33IFqGd7PLgt5nGJTO', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 2, '', '自由职业者', b'1', b'1', NULL, '2021-01-13 17:40:17', NULL, '');
+INSERT INTO `ums_user` VALUES ('1595254537973821441', 'schwefel', 'schwefel', '267c24c85343017f14c74d51ed4d5dcf', '/img/avatar/fu-cloud-icon.png', '032004123@fzu.edu.cn', NULL, 0, '', '数据科学与大数据技术', b'1', b'1', NULL, '2021-01-14 15:25:59', NULL, '这个用户很懒！没有留下签名');
 
 SET FOREIGN_KEY_CHECKS = 1;

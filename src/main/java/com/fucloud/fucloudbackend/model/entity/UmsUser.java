@@ -45,8 +45,8 @@ public class UmsUser implements Serializable {
     private String mobile;
 
     @Builder.Default
-    @TableField("bio")
-    private String bio = "自由职业者";
+    @TableField("dep")
+    private String dep = "福州大学";
 
     @Builder.Default
     @TableField("score")
@@ -78,5 +78,9 @@ public class UmsUser implements Serializable {
 
     @TableField(value = "modify_time", fill = FieldFill.INSERT_UPDATE)
     private Date modifyTime;
+
+    @Builder.Default
+    @TableField("sign")
+    private String sign = "这个人很懒，什么都没有留下";
 
 }
