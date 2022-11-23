@@ -1,6 +1,7 @@
 HELP.md
 target/
-main/resources/static/img/
+src/main/resources/static/img/
+src/main/resources/application.yml
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
