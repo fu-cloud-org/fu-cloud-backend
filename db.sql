@@ -28,7 +28,7 @@ CREATE TABLE `bms_billboard`  (
 -- ----------------------------
 -- Records of bms_billboard
 -- ----------------------------
-INSERT INTO `bms_billboard` VALUES (2, '愿意乘冷风去，直出福云间', '2022-11-9 23:16:19', 1);
+INSERT INTO `bms_billboard` VALUES (2, '愿乘冷风去，直出福云间', '2022-11-9 23:16:19', 1);
 INSERT INTO `bms_billboard` VALUES (4, '系统已更新至最新版1.0.1', NULL, 0);
 
 
@@ -263,6 +263,6 @@ CREATE TABLE `ums_user`  (
 -- Records of ums_user
 -- ----------------------------
 INSERT INTO `ums_user` VALUES ('1349290158897311745', 'admin', 'admin', '$2a$10$8qx711TBg/2hxfL7N.sxf.0ROMhR/iuPhQx33IFqGd7PLgt5nGJTO', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 2, '', '自由职业者', b'1', b'1', NULL, '2021-01-13 17:40:17', NULL);
-INSERT INTO `ums_user` VALUES ('1349618748226658305', 'zhangsan', 'zhangsan', '$2a$10$7K3yYv8sMV5Xsc2facXTcuyDo8JQ4FJHvjZ7qtWYcJdei3Q6Fvqdm', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 0, '', '自由职业者', b'1', b'1', NULL, '2021-01-14 15:25:59', NULL);
+-- INSERT INTO `ums_user` VALUES ('1349618748226658305', 'zhangsan', 'zhangsan', '$2a$10$7K3yYv8sMV5Xsc2facXTcuyDo8JQ4FJHvjZ7qtWYcJdei3Q6Fvqdm', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 0, '', '自由职业者', b'1', b'1', NULL, '2021-01-14 15:25:59', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

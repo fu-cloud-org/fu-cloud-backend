@@ -1,11 +1,15 @@
 package com.fucloud.fucloudbackend.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fucloud.fucloudbackend.common.Constants;
 import com.fucloud.fucloudbackend.common.api.ResultApi;
 import com.fucloud.fucloudbackend.model.dto.LoginDTO;
 import com.fucloud.fucloudbackend.model.dto.RegisterDTO;
+import com.fucloud.fucloudbackend.model.entity.BmsPost;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.model.vo.ProfileVO;
+import com.fucloud.fucloudbackend.service.BmsPostService;
 import com.fucloud.fucloudbackend.service.UmsUserService;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
@@ -27,6 +31,9 @@ public class UmsUserController extends BaseController {
 
     @Resource
     private UmsUserService umsUserService;
+
+    @Resource
+    private BmsPostService bmsPostService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResultApi<Map<String, Object>> register(@Valid @RequestBody RegisterDTO dto) {
@@ -92,5 +99,18 @@ public class UmsUserController extends BaseController {
         return ResultApi.success(profileVO);
     }
 
+    @GetMapping("/{username}")
+    public ResultApi<Map<String, Object>> getUserByName(@PathVariable("username") String username,
+                                                        @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo,
+                                                        @RequestParam(value = "size", defaultValue = "10") Integer size) {
+        Map<String, Object> map = new HashMap<>(16);
+        UmsUser user = umsUserService.getUserByUsername(username);
+        Assert.notNull(user, "用户不存在");
+        Page<BmsPost> page = bmsPostService.page(new Page<>(pageNo, size),
+                new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, user.getId()));
+        map.put("user", user);
+        map.put("posts", page);
+        return ResultApi.success(map);
+    }
 
 }
