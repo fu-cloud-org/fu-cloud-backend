@@ -5,6 +5,7 @@ import com.fucloud.fucloudbackend.common.api.ResultApi;
 import com.fucloud.fucloudbackend.common.exception.AssertsApi;
 import com.fucloud.fucloudbackend.model.entity.BmsFollow;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
+import com.fucloud.fucloudbackend.model.vo.FansAndFollowersVO;
 import com.fucloud.fucloudbackend.service.BmsFollowService;
 import com.fucloud.fucloudbackend.service.UmsUserService;
 import org.springframework.util.ObjectUtils;
@@ -14,6 +15,7 @@ import javax.annotation.Resource;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static com.fucloud.fucloudbackend.jwt.JwtUtil.USER_NAME;
 
@@ -80,6 +82,16 @@ public class BmsFollowController extends BaseController {
             }
         }
         return ResultApi.success(map);
+    }
+
+    @GetMapping("/fans/{id}")
+    public ResultApi<Set<FansAndFollowersVO>> getFans(@PathVariable("id") String id) {
+        return ResultApi.success(bmsFollowService.getFans(id));
+    }
+
+    @GetMapping("/followers/{id}")
+    public ResultApi<Set<FansAndFollowersVO>> getFollowers(@PathVariable("id") String id) {
+        return ResultApi.success(bmsFollowService.getFollowers(id));
     }
 
 }
