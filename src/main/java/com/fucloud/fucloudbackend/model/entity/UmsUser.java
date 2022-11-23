@@ -83,4 +83,11 @@ public class UmsUser implements Serializable {
     @TableField("sign")
     private String sign = "这个人很懒，什么都没有留下";
 
+    @Builder.Default
+    @TableField("sex")
+    private Integer sex = 2;
+
+    @TableField("regional")
+    private String regional;
+
 }

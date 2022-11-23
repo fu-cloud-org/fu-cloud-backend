@@ -46,9 +46,9 @@ CREATE TABLE `bms_follow`  (
 -- ----------------------------
 -- Records of bms_follow
 -- ----------------------------
-INSERT INTO `bms_follow` VALUES (65, '1329723594994229250', '1317498859501797378');
-INSERT INTO `bms_follow` VALUES (85, '1332912847614083073', '1332636310897664002');
-INSERT INTO `bms_follow` VALUES (129, '1349290158897311745', '1349618748226658305');
+-- INSERT INTO `bms_follow` VALUES (65, '1329723594994229250', '1317498859501797378');
+-- INSERT INTO `bms_follow` VALUES (85, '1332912847614083073', '1332636310897664002');
+-- INSERT INTO `bms_follow` VALUES (129, '1349290158897311745', '1349618748226658305');
 
 -- ----------------------------
 -- Table structure for bms_post
@@ -254,6 +254,8 @@ CREATE TABLE `ums_user`  (
                              `create_time` datetime NOT NULL COMMENT '加入时间',
                              `modify_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
                              `sign` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这个用户很懒！没有留下签名' COMMENT '签名',
+                             `sex` smallint NULL DEFAULT 2 CHECK(`sex` in (0, 1, 2)) COMMENT '性别，0：女，1：男，2：保密',
+                             `regional` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地区',
                              PRIMARY KEY (`id`) USING BTREE,
                              UNIQUE INDEX `user_name`(`username`) USING BTREE,
                              INDEX `user_email`(`email`) USING BTREE,
@@ -263,7 +265,7 @@ CREATE TABLE `ums_user`  (
 -- ----------------------------
 -- Records of ums_user
 -- ----------------------------
-INSERT INTO `ums_user` VALUES ('1349290158897311745', 'admin', 'admin', '$2a$10$8qx711TBg/2hxfL7N.sxf.0ROMhR/iuPhQx33IFqGd7PLgt5nGJTO', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 2, '', '自由职业者', b'1', b'1', NULL, '2021-01-13 17:40:17', NULL, '');
-INSERT INTO `ums_user` VALUES ('1595254537973821441', 'schwefel', 'schwefel', '267c24c85343017f14c74d51ed4d5dcf', '/img/avatar/fu-cloud-icon.png', '032004123@fzu.edu.cn', NULL, 0, '', '数据科学与大数据技术', b'1', b'1', NULL, '2021-01-14 15:25:59', NULL, '这个用户很懒！没有留下签名');
+INSERT INTO `ums_user` VALUES ('1349290158897311745', 'admin', 'admin', '$2a$10$8qx711TBg/2hxfL7N.sxf.0ROMhR/iuPhQx33IFqGd7PLgt5nGJTO', '/img/avatar/fu-cloud-icon.png', '23456@qq.com', NULL, 2, '', '自由职业者', b'1', b'1', NULL, '2021-01-13 17:40:17', NULL, '',2, NULL);
+INSERT INTO `ums_user` VALUES ('1595254537973821441', 'schwefel', 'schwefel', '267c24c85343017f14c74d51ed4d5dcf', '/img/avatar/fu-cloud-icon.png', '032004123@fzu.edu.cn', NULL, 0, '', '数据科学与大数据技术', b'1', b'1', NULL, '2021-01-14 15:25:59', NULL, '这个用户很懒！没有留下签名', 1, '福建省-漳州市');
 
 SET FOREIGN_KEY_CHECKS = 1;
