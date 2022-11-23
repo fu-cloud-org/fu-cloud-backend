@@ -90,16 +90,12 @@ public class UmsUserServiceImpl
     @Override
     public ProfileVO getUserProfile(String id) {
         ProfileVO profileVO = new ProfileVO();
-        UmsUser umsUserById = baseMapper.selectById(id);
-        UmsUser umsUserByName = getUserByUsername(id);
-        UmsUser umsUser = umsUserByName != null ? umsUserByName : umsUserById;
+        UmsUser umsUser = baseMapper.selectById(id);
         BeanUtils.copyProperties(umsUser, profileVO);
 
-        String userId = umsUser.getId();
-
-        Long postCount = bmsPostMapper.selectCount(new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, userId));
-        Long fansCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getFollowerId, userId));
-        Long followerCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getParentId, userId));
+        Long postCount = bmsPostMapper.selectCount(new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, id));
+        Long fansCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getFollowerId, id));
+        Long followerCount = bmsFollowMapper.selectCount(new LambdaQueryWrapper<BmsFollow>().eq(BmsFollow::getParentId, id));
 
         profileVO.setPostCount(postCount);
         profileVO.setFansCount(fansCount);

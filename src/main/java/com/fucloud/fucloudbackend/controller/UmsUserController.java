@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fucloud.fucloudbackend.common.Constants;
 import com.fucloud.fucloudbackend.common.api.ResultApi;
+import com.fucloud.fucloudbackend.dao.UmsUserMapper;
 import com.fucloud.fucloudbackend.model.dto.LoginDTO;
 import com.fucloud.fucloudbackend.model.dto.RegisterDTO;
 import com.fucloud.fucloudbackend.model.entity.BmsPost;
@@ -99,12 +100,17 @@ public class UmsUserController extends BaseController {
         return ResultApi.success(profileVO);
     }
 
+    @Resource
+    private UmsUserMapper umsUserMapper;
+
     @GetMapping("/{username}")
     public ResultApi<Map<String, Object>> getUserByName(@PathVariable("username") String username,
                                                         @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo,
                                                         @RequestParam(value = "size", defaultValue = "10") Integer size) {
         Map<String, Object> map = new HashMap<>(16);
-        UmsUser user = umsUserService.getUserByUsername(username);
+        UmsUser userByName = umsUserService.getUserByUsername(username);
+        UmsUser userById = umsUserMapper.selectById(username);
+        UmsUser user = ObjectUtils.isEmpty(userById) ? userByName : userById;
         Assert.notNull(user, "用户不存在");
         Page<BmsPost> page = bmsPostService.page(new Page<>(pageNo, size),
                 new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, user.getId()));
