@@ -13,7 +13,7 @@ spring:
     default-encoding: utf-8
     host: smtp.qq.com
     username: 1106518291@qq.com
-    password: mbotcywqjvirjbeh
+    password:
     properties:
       mail:
         smtp:
@@ -29,7 +29,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 15959690591
+    password:
     url: jdbc:mysql://localhost:3306/fu_cloud?useSSL=true&useUnicode=true&characterEncoding=utf8
     type: com.zaxxer.hikari.HikariDataSource
 
