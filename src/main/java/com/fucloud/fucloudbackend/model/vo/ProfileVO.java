@@ -50,4 +50,6 @@ public class ProfileVO {
      */
     private Integer commentCount;
 
+    private Integer sex;
+
 }

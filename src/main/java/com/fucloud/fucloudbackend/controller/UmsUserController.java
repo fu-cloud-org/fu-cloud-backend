@@ -119,4 +119,10 @@ public class UmsUserController extends BaseController {
         return ResultApi.success(map);
     }
 
+    @PostMapping("/update")
+    public ResultApi<UmsUser> updateUser(@RequestBody UmsUser umsUser) {
+        umsUserService.updateById(umsUser);
+        return ResultApi.success(umsUser);
+    }
+
 }
