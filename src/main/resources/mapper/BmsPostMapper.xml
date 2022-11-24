@@ -69,6 +69,10 @@
         FROM bms_post t
         LEFT JOIN ums_user u
         ON t.user_id = u.id
+        LEFT JOIN bms_post_tag pt
+        ON t.id = pt.post_id
+        LEFT JOIN bms_tag tg
+        ON pt.tag_id = tg.id
         <where>
             <if test="keyword!=null">
                 and t.title like CONCAT('%','${keyword}')
@@ -79,6 +83,14 @@
                 or t.summary like CONCAT('${keyword}','%')
                 or t.summary like CONCAT('%','${keyword}','%')
                 or t.summary = #{keyword}
+                or u.alias like CONCAT('%','${keyword}')
+                or u.alias like CONCAT('${keyword}','%')
+                or u.alias like CONCAT('%','${keyword}','%')
+                or u.alias = #{keyword}
+                or tg.name like CONCAT('%','${keyword}')
+                or tg.name like CONCAT('${keyword}','%')
+                or tg.name like CONCAT('%','${keyword}','%')
+                or tg.name = #{keyword}
             </if>
         </where>
         order by t.view desc, t.create_time desc
