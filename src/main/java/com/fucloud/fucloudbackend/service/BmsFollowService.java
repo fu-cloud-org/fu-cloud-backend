@@ -8,8 +8,8 @@ import java.util.Set;
 
 public interface BmsFollowService extends IService<BmsFollow> {
 
-    Set<FansAndFollowersVO> getFans(String id);
+    Set<FansAndFollowersVO> getFans(String id, String myName);
 
-    Set<FansAndFollowersVO> getFollowers(String id);
+    Set<FansAndFollowersVO> getFollowers(String id, String myName);
 
 }

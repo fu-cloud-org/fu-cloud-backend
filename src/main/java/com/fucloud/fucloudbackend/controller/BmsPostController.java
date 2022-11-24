@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static com.fucloud.fucloudbackend.jwt.JwtUtil.USER_NAME;
 
@@ -103,6 +104,11 @@ public class BmsPostController extends BaseController {
         Assert.isTrue(byId.getUserId().equals(umsUser.getId()), "你为什么可以删除别人的话题？？？");
         bmsPostService.removeById(id);
         return ResultApi.success(null,"删除成功");
+    }
+
+    @GetMapping("/myPost/{id}")
+    public ResultApi<Set<PostVO>> getMyPost(@PathVariable String id) {
+        return ResultApi.success(bmsPostService.getMyPost(id));
     }
 
 }

@@ -7,8 +7,10 @@ import com.fucloud.fucloudbackend.model.entity.BmsPost;
 import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.model.vo.PostVO;
 
+import javax.mail.search.SearchTerm;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface BmsPostService extends IService<BmsPost> {
 
@@ -55,5 +57,7 @@ public interface BmsPostService extends IService<BmsPost> {
      * @return
      */
     Page<PostVO> searchByKey(String keyword, Page<PostVO> page);
+
+    Set<PostVO> getMyPost(String id);
 
 }

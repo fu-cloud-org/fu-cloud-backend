@@ -13,5 +13,6 @@ public class FansAndFollowersVO {
     private String avatar;
     private String sign;
     private String dep;
+    private Boolean isMyFollowed;
 
 }

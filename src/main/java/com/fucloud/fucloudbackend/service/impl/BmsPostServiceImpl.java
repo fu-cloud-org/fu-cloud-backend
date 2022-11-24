@@ -137,4 +137,23 @@ public class BmsPostServiceImpl extends
         setPostTags(iPage);
         return iPage;
     }
+
+    @Override
+    public Set<PostVO> getMyPost(String id) {
+        Set<PostVO> posts = new HashSet<>();
+        this.baseMapper.selectList(
+                new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, id)
+        ).forEach(post -> {
+            posts.add(PostVO.builder()
+                            .id(post.getId())
+                            .username(post.getUserId())
+                            .createTime(post.getCreateTime())
+                            .cover(post.getCover())
+                            .comments(post.getComments())
+                            .collects(post.getCollects())
+                            .summary(post.getSummary())
+                            .build());
+        });
+        return posts;
+    }
 }

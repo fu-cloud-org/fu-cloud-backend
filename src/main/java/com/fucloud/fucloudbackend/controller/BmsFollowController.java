@@ -9,6 +9,7 @@ import com.fucloud.fucloudbackend.model.vo.FansAndFollowersVO;
 import com.fucloud.fucloudbackend.service.BmsFollowService;
 import com.fucloud.fucloudbackend.service.UmsUserService;
 import org.springframework.util.ObjectUtils;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -85,13 +86,15 @@ public class BmsFollowController extends BaseController {
     }
 
     @GetMapping("/fans/{id}")
-    public ResultApi<Set<FansAndFollowersVO>> getFans(@PathVariable("id") String id) {
-        return ResultApi.success(bmsFollowService.getFans(id));
+    public ResultApi<Set<FansAndFollowersVO>> getFans(@PathVariable("id") String id,
+                                                  @RequestParam("username") String userName) {
+        return ResultApi.success(bmsFollowService.getFans(id, userName));
     }
 
     @GetMapping("/followers/{id}")
-    public ResultApi<Set<FansAndFollowersVO>> getFollowers(@PathVariable("id") String id) {
-        return ResultApi.success(bmsFollowService.getFollowers(id));
+    public ResultApi<Set<FansAndFollowersVO>> getFollowers(@PathVariable("id") String id,
+                                                       @RequestParam("username") String username) {
+        return ResultApi.success(bmsFollowService.getFollowers(id, username));
     }
 
 }
