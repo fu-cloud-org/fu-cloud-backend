@@ -106,7 +106,7 @@ public class BmsPostController extends BaseController {
         return ResultApi.success(null,"删除成功");
     }
 
-    @GetMapping("/myPost/{id}")
+    @GetMapping("/getMyPosts/{id}")
     public ResultApi<Set<PostVO>> getMyPost(@PathVariable String id) {
         return ResultApi.success(bmsPostService.getMyPost(id));
     }

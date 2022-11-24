@@ -141,17 +141,29 @@ public class BmsPostServiceImpl extends
     @Override
     public Set<PostVO> getMyPost(String id) {
         Set<PostVO> posts = new HashSet<>();
+        UmsUser author = umsUserMapper.selectById(id);
         this.baseMapper.selectList(
                 new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, id)
         ).forEach(post -> {
+            List<BmsTag> tags = new ArrayList<>();
+            bmsPostTagService.selectByPostId(post.getId()).forEach(postTag -> {
+                tags.add(bmsTagMapper.selectById(postTag.getTagId()));
+            });
             posts.add(PostVO.builder()
                             .id(post.getId())
+                            .title(post.getTitle())
+                            .top(post.getTop())
                             .username(post.getUserId())
                             .createTime(post.getCreateTime())
                             .cover(post.getCover())
                             .comments(post.getComments())
                             .collects(post.getCollects())
                             .summary(post.getSummary())
+                            .view(post.getView())
+                            .alias(author.getAlias())
+                            .avatar(author.getAvatar())
+                            .userId(author.getId())
+                            .tags(tags)
                             .build());
         });
         return posts;
