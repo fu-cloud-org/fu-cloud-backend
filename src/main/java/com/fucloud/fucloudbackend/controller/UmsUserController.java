@@ -72,7 +72,7 @@ public class UmsUserController extends BaseController {
         return ResultApi.success(null, "退出登陆成功");
     }
 
-    @RequestMapping(value = "/updateAvatar", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploadAvatar", method = RequestMethod.POST)
     public Object updateAvatar(@RequestParam(value="userName") String userName,
                                @RequestParam("file") MultipartFile avatarFile){
         String fileName = System.currentTimeMillis() + avatarFile.getOriginalFilename();
@@ -84,10 +84,10 @@ public class UmsUserController extends BaseController {
         if(!file1.exists())
             file1.mkdirs();
         File dest = new File(filePath + System.getProperty("file.separator") + fileName);
-        String imgPath = "/img/cover/" + userName + '/' + fileName;
+        String imgPath = "/img/avatar/" + userName + '/' + fileName;
         try {
             avatarFile.transferTo(dest);
-            return ResultApi.success("更新成功");
+            return ResultApi.success(imgPath);
         } catch (IOException e){
             return ResultApi.failed("更新失败");
         }
@@ -123,6 +123,15 @@ public class UmsUserController extends BaseController {
     public ResultApi<UmsUser> updateUser(@RequestBody UmsUser umsUser) {
         umsUserService.updateById(umsUser);
         return ResultApi.success(umsUser);
+    }
+
+    @GetMapping ("/updateAvatar")
+    public ResultApi<Object> updateAvatar(@RequestParam(value = "userName") String userName,
+                                          @RequestParam(value = "avatarPath") String imgPath){
+        UmsUser me = umsUserService.getUserByUsername(userName);
+        me.setAvatar(imgPath);
+        umsUserMapper.updateById(me);
+        return ResultApi.success("更新成功 ");
     }
 
 }
