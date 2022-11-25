@@ -107,7 +107,7 @@ public class BmsPostController extends BaseController {
     }
 
     @GetMapping("/getMyPosts/{id}")
-    public ResultApi<Set<PostVO>> getMyPost(@PathVariable String id) {
+    public ResultApi<List<PostVO>> getMyPost(@PathVariable String id) {
         return ResultApi.success(bmsPostService.getMyPost(id));
     }
 

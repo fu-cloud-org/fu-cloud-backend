@@ -58,6 +58,6 @@ public interface BmsPostService extends IService<BmsPost> {
      */
     Page<PostVO> searchByKey(String keyword, Page<PostVO> page);
 
-    Set<PostVO> getMyPost(String id);
+    List<PostVO> getMyPost(String id);
 
 }
