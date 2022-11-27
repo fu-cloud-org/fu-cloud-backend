@@ -84,7 +84,7 @@ INSERT INTO `bms_post` VALUES ('1332650453142827009', '哈哈哈，helloworld', 
 INSERT INTO `bms_post` VALUES ('1333432347031646209', '哈哈哈，换了个dark主题', '主题更换为Dark\n\n', '1349290158897311745', 0, 0, 6, b'0', b'0', 0, '2022-10-30 23:27:00', NULL, '/img/cover/fu-cloud-org.png', '不写简介的帖子可不是一篇好帖子欧');
 INSERT INTO `bms_post` VALUES ('1333668258587750401', '嘿嘿，测试一下啊', '大家好\n`Hello everyone!`\n\n\n\n', '1349290158897311745', 0, 0, 7, b'0', b'0', 0, '2022-11-01 15:04:26', '2022-11-01 16:49:14', '/img/cover/fu-cloud-org.png', '不写简介的帖子可不是一篇好帖子欧');
 INSERT INTO `bms_post` VALUES ('1332682473151635458', '我要发财', '2021 冲冲冲！！！\n\n', '1349290158897311745', 0, 0, 94, b'0', b'0', 2, '2022-10-28 21:47:16', '2022-10-30 19:40:22', '/img/cover/fu-cloud-org.png', '不写简介的帖子可不是一篇好帖子欧');
-INSERT INTO `bms_post` VALUES ('1333695976536748034', '最新版本介绍，同步更新！', '<p align=center>一款基于SpringBoot构建的智慧社区系统</p>\n\n<p align=center>\n<a href=\"https://github.com/1020317774/rhapsody-admin/stargazers\"><img alt=\"GitHub release\" src=\"https://img.shields.io/github/release/1020317774/rhapsody-admin?style=flat-square\"></a>\n<a href=\"https://github.com/1020317774/rhapsody-admin/blob/main/LICENSE\"><img alt=\"GitHub license\" src=\"https://img.shields.io/github/license/1020317774/rhapsody-admin\"></a>\n</p>\n\n### Hi there :wave:\n\n<!--\n**1020317774/1020317774** is a :sparkles: _special_ :sparkles: repository because its `README.md` (this file) appears on your GitHub profile.\n\nHere are some ideas to get you started:\n\n- :telescope: I’m currently working on ...\n- :seedling: I’m currently learning ...\n- :dancers: I’m looking to collaborate on ...\n- :thinking: I’m looking for help with ...\n- :speech_balloon: Ask me about ...\n- :mailbox: How to reach me: ...\n- :smile: Pronouns: ...\n- :zap: Fun fact: ...\n-->\n\n[![1020317774\'s github stats](https://github-readme-stats.vercel.app/api?username=1020317774&show_icons=true&count_private=true)](https://github.com/1020317774)\n\n[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=1020317774&layout=compact)](https://github.com/1020317774)\n---------\n\n> 作者：王一晨\n> github：[https://github.com/1020317774](https://github.com/1020317774)\n\n## 技术栈\n\n- [x] SpringBoot 2.X\n- [x] Mysql 8.X\n- [x] Mybatis\n- [x] MybatisPlus\n- [x] Redis\n- [x] Jwt\n- [x] FastJson\n- [x] Hutool\n- [x] Lombok\n- [ ] ElasticSearch\n\n……\n\n## 安装指导\n\n- 克隆\n\n```java\ngit clone https://github.com/1020317774/rhapsody-admin.git\n```\n\n- 修改`application.yml`选择环境\n- 修改多环境配置中的redis参数和数据库\n- 启动`BootApplication`\n- 访问[`http://127.0.0.1:10000`](http://127.0.0.1:10000)\n\n', '1349290158897311745', 0, 0, 45, b'1', b'1', 0, '2022-12-01 16:54:34', '2022-12-01 17:05:00', '/img/cover/fu-cloud-org.png', '不写简介的帖子可不是一篇好帖子欧');
+-- INSERT INTO `bms_post` VALUES ('1333695976536748034', '最新版本介绍，同步更新！', '<p align=center>一款基于SpringBoot构建的智慧社区系统</p>\n\n<p align=center>\n<a href=\"https://github.com/1020317774/rhapsody-admin/stargazers\"><img alt=\"GitHub release\" src=\"https://img.shields.io/github/release/1020317774/rhapsody-admin?style=flat-square\"></a>\n<a href=\"https://github.com/1020317774/rhapsody-admin/blob/main/LICENSE\"><img alt=\"GitHub license\" src=\"https://img.shields.io/github/license/1020317774/rhapsody-admin\"></a>\n</p>\n\n### Hi there :wave:\n\n<!--\n**1020317774/1020317774** is a :sparkles: _special_ :sparkles: repository because its `README.md` (this file) appears on your GitHub profile.\n\nHere are some ideas to get you started:\n\n- :telescope: I’m currently working on ...\n- :seedling: I’m currently learning ...\n- :dancers: I’m looking to collaborate on ...\n- :thinking: I’m looking for help with ...\n- :speech_balloon: Ask me about ...\n- :mailbox: How to reach me: ...\n- :smile: Pronouns: ...\n- :zap: Fun fact: ...\n-->\n\n[![1020317774\'s github stats](https://github-readme-stats.vercel.app/api?username=1020317774&show_icons=true&count_private=true)](https://github.com/1020317774)\n\n[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=1020317774&layout=compact)](https://github.com/1020317774)\n---------\n\n> 作者：王一晨\n> github：[https://github.com/1020317774](https://github.com/1020317774)\n\n## 技术栈\n\n- [x] SpringBoot 2.X\n- [x] Mysql 8.X\n- [x] Mybatis\n- [x] MybatisPlus\n- [x] Redis\n- [x] Jwt\n- [x] FastJson\n- [x] Hutool\n- [x] Lombok\n- [ ] ElasticSearch\n\n……\n\n## 安装指导\n\n- 克隆\n\n```java\ngit clone https://github.com/1020317774/rhapsody-admin.git\n```\n\n- 修改`application.yml`选择环境\n- 修改多环境配置中的redis参数和数据库\n- 启动`BootApplication`\n- 访问[`http://127.0.0.1:10000`](http://127.0.0.1:10000)\n\n', '1349290158897311745', 0, 0, 45, b'1', b'1', 0, '2022-12-01 16:54:34', '2022-12-01 17:05:00', '/img/cover/fu-cloud-org.png', '不写简介的帖子可不是一篇好帖子欧');
 INSERT INTO `bms_post` VALUES ('1349631541260595202', '权限部分 OK', '1. 创建 ok\n2. 修改 ok\n3. 删除 ok\n\n', '1349290158897311745', 0, 0, 17, b'0', b'0', 0, '2021-01-14 16:16:49', '2021-01-14 16:18:53', '/img/cover/fu-cloud-org.png', '不写简介的帖子可不是一篇好帖子欧');
 INSERT INTO `bms_post` VALUES ('1333676096156528641', '测试', '测试\n\n', '1349290158897311745', 0, 0, 38, b'0', b'0', 0, '2022-11-01 15:35:34', NULL, '/img/cover/fu-cloud-org.png', '不写简介的帖子可不是一篇好帖子欧');
 INSERT INTO `bms_post` VALUES ('1332681213400817665', '聚合查询并统计', '* [x] SQL：\n\n```sql\nSELECT s.*,\nCOUNT(t.id) AS topics\nFROM section s\nLEFT JOIN topic t\nON s.id = t.section_id\nGROUP BY s.title\n```\n\n', '1349290158897311745', 0, 0, 55, b'0', b'0', 1, '2022-10-28 21:42:16', '2022-10-29 15:00:42', '/img/cover/fu-cloud-org.png', '不写简介的帖子可不是一篇好帖子欧');
@@ -232,6 +232,16 @@ INSERT INTO `bms_tip` VALUES (20, '在科学上没有平坦的大道，只有不
 INSERT INTO `bms_tip` VALUES (21, '懒惰的马嫌路远', '蒙古', 1);
 INSERT INTO `bms_tip` VALUES (22, '别忘记热水是由冷水烧成的', '非洲', 1);
 
+-- ----------------------------
+-- Table structure for collect
+-- ----------------------------
+DROP TABLE IF EXISTS `collect`;
+CREATE TABLE `collect`  (
+                            `id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键',
+                            `post_id` varchar(20) CHARACTER SET utf8mb4 NULL DEFAULT NULL COMMENT ' 帖子id',
+                            `user_id` varchar(20) CHARACTER SET utf8mb4 NULL DEFAULT NULL COMMENT '点赞用户id',
+                            PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 130 CHARACTER SET = utf8mb4  COMMENT = '收藏' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for ums_user
@@ -254,10 +264,11 @@ CREATE TABLE `ums_user`  (
                              `create_time` datetime NOT NULL COMMENT '加入时间',
                              `modify_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
                              `sign` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '这个用户很懒！没有留下签名' COMMENT '签名',
-                             `sex` smallint NULL DEFAULT 2 CHECK(`sex` in (0, 1, 2)) COMMENT '性别，0：女，1：男，2：保密',
+                             `sex` smallint NULL DEFAULT 2 COMMENT '性别，0：女，1：男，2：保密',
                              `regional` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地区',
                              PRIMARY KEY (`id`) USING BTREE,
                              UNIQUE INDEX `user_name`(`username`) USING BTREE,
+                             CHECK(`sex` in (0, 1, 2)),
                              INDEX `user_email`(`email`) USING BTREE,
                              INDEX `user_create_time`(`create_time`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = DYNAMIC;
