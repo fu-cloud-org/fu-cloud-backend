@@ -241,7 +241,7 @@ CREATE TABLE `collect`  (
                             `post_id` varchar(20) CHARACTER SET utf8mb4 NULL DEFAULT NULL COMMENT ' 帖子id',
                             `user_id` varchar(20) CHARACTER SET utf8mb4 NULL DEFAULT NULL COMMENT '点赞用户id',
                             PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 130 CHARACTER SET = utf8mb4  COMMENT = '收藏' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 130 CHARACTER SET = utf8mb4  COMMENT = '点赞' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for ums_user
