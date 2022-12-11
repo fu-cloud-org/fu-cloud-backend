@@ -1,5 +1,6 @@
 package com.fucloud.fucloudbackend.config;
 
+import org.springframework.boot.system.ApplicationHome;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -27,22 +28,30 @@ public class WebMvcGlobalConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 //暴露哪些原始请求头部信息
                 .exposedHeaders("*");
+//                .allowedOrigins("http://120.76.202.109");
     }
 
     // static resources path
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//
+//        String PROJECT_PATH = System.getProperty("user.dir");
+//
+//        // cover
+//        registry.addResourceHandler("/img/cover/**")
+//                .addResourceLocations("file:" + PROJECT_PATH + "/src/main/resources/static/img/cover/");
+//
+//        // avatar
+//        registry.addResourceHandler("/img/avatar/**")
+//                .addResourceLocations("file:" + PROJECT_PATH + "/src/main/resources/static/img/avatar/");
+//    }
 
-        String PROJECT_PATH = System.getProperty("user.dir");
 
-        // cover
-        registry.addResourceHandler("/img/cover/**")
-                .addResourceLocations("file:" + PROJECT_PATH + "/src/main/resources/static/img/cover/");
-
-        // avatar
-        registry.addResourceHandler("/img/avatar/**")
-                .addResourceLocations("file:" + PROJECT_PATH + "/src/main/resources/static/img/avatar/");
-    }
-
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        String path = new ApplicationHome(getClass()).getSource().getParentFile().toString() + "/static/";
+//        registry.addResourceHandler("/static/**").addResourceLocations("file:" + path + "/img/cover/");
+//        registry.addResourceHandler("/static/**").addResourceLocations("file:" + path + "/img/avatar/");
+//    }
 }

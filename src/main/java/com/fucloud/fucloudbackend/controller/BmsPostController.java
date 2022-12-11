@@ -10,6 +10,7 @@ import com.fucloud.fucloudbackend.model.vo.PostVO;
 import com.fucloud.fucloudbackend.service.BmsPostService;
 import com.fucloud.fucloudbackend.service.UmsUserService;
 import com.vdurmont.emoji.EmojiParser;
+import org.springframework.boot.system.ApplicationHome;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -56,9 +57,8 @@ public class BmsPostController extends BaseController {
     public Object uploadCover(@RequestParam(value = "userName") String userName
             , @RequestParam("file") MultipartFile coverFile) {
         String fileName = System.currentTimeMillis() + coverFile.getOriginalFilename();
-        String filePath = Constants.PROJECT_PATH +System.getProperty("file.separator")
-                + "src" + System.getProperty("file.separator") + "main" + System.getProperty("file.separator") +
-                "resources" + System.getProperty("file.separator") + "static" + System.getProperty("file.separator") + "img"
+        String s = new ApplicationHome(getClass()).getSource().getParentFile().toString() + "/static/";
+        String filePath = s + "img"
                 + System.getProperty("file.separator") + "cover" + System.getProperty("file.separator") + userName;
         File file1 = new File(filePath);
         if (!file1.exists()) {
@@ -87,7 +87,7 @@ public class BmsPostController extends BaseController {
     }
 
     @PostMapping("/update")
-    public ResultApi<BmsPost> update(@RequestHeader(value = USER_NAME) String userName, @Valid @RequestBody BmsPost post) {
+    public ResultApi<BmsPost> update(@RequestParam(value = USER_NAME) String userName, @Valid @RequestBody BmsPost post) {
         UmsUser umsUser = umsUserService.getUserByUsername(userName);
         Assert.isTrue(umsUser.getId().equals(post.getUserId()), "非本人无权修改");
         post.setModifyTime(new Date());
@@ -97,7 +97,7 @@ public class BmsPostController extends BaseController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResultApi<String> delete(@RequestHeader(value = USER_NAME) String userName, @PathVariable("id") String id) {
+    public ResultApi<String> delete(@RequestParam(value = USER_NAME) String userName, @PathVariable("id") String id) {
         UmsUser umsUser = umsUserService.getUserByUsername(userName);
         BmsPost byId = bmsPostService.getById(id);
         Assert.notNull(byId, "来晚一步，话题已不存在");

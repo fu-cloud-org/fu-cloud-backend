@@ -31,7 +31,7 @@ public class BmsFollowController extends BaseController {
     private UmsUserService umsUserService;
 
     @GetMapping("/subscribe/{userId}")
-    public ResultApi<Object> handleFollow(@RequestHeader(value = USER_NAME) String userName
+    public ResultApi<Object> handleFollow(@RequestParam(value = USER_NAME) String userName
             , @PathVariable("userId") String parentId) {
         UmsUser umsUser = umsUserService.getUserByUsername(userName);
         if (parentId.equals(umsUser.getId())) {
@@ -53,7 +53,7 @@ public class BmsFollowController extends BaseController {
     }
 
     @GetMapping("/unsubscribe/{userId}")
-    public ResultApi<Object> handleUnFollow(@RequestHeader(value = USER_NAME) String userName
+    public ResultApi<Object> handleUnFollow(@RequestParam(value = USER_NAME) String userName
             , @PathVariable("userId") String parentId) {
         UmsUser umsUser = umsUserService.getUserByUsername(userName);
         BmsFollow one = bmsFollowService.getOne(
@@ -69,7 +69,7 @@ public class BmsFollowController extends BaseController {
     }
 
     @GetMapping("/validate/{postUserId}")
-    public ResultApi<Map<String, Object>> isFollow(@RequestHeader(value = USER_NAME) String userName
+    public ResultApi<Map<String, Object>> isFollow(@RequestParam(value = USER_NAME) String userName
             , @PathVariable("postUserId") String postUserId) {
         UmsUser umsUser = umsUserService.getUserByUsername(userName);
         Map<String, Object> map = new HashMap<>(16);

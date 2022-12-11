@@ -12,6 +12,7 @@ import com.fucloud.fucloudbackend.model.entity.UmsUser;
 import com.fucloud.fucloudbackend.model.vo.ProfileVO;
 import com.fucloud.fucloudbackend.service.BmsPostService;
 import com.fucloud.fucloudbackend.service.UmsUserService;
+import org.springframework.boot.system.ApplicationHome;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
@@ -62,7 +63,7 @@ public class UmsUserController extends BaseController {
     }
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
-    public ResultApi<UmsUser> getUser(@RequestHeader(value = USER_NAME) String userName) {
+    public ResultApi<UmsUser> getUser(@RequestParam(value = "userName") String userName) {
         UmsUser user = umsUserService.getUserByUsername(userName);
         return ResultApi.success(user);
     }
@@ -76,9 +77,8 @@ public class UmsUserController extends BaseController {
     public Object updateAvatar(@RequestParam(value="userName") String userName,
                                @RequestParam("file") MultipartFile avatarFile){
         String fileName = System.currentTimeMillis() + avatarFile.getOriginalFilename();
-        String filePath = Constants.PROJECT_PATH +System.getProperty("file.separator")
-                + "src" + System.getProperty("file.separator") + "main" + System.getProperty("file.separator") +
-                "resources" + System.getProperty("file.separator") + "static" + System.getProperty("file.separator") + "img"
+        String s = new ApplicationHome(getClass()).getSource().getParentFile().toString() + "/static/";
+        String filePath = s + System.getProperty("file.separator") + "img"
                 + System.getProperty("file.separator") + "avatar" + System.getProperty("file.separator") + userName;
         File file1 = new File(filePath);
         if(!file1.exists())
