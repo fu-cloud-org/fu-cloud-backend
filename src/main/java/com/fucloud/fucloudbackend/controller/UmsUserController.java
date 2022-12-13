@@ -68,6 +68,12 @@ public class UmsUserController extends BaseController {
         return ResultApi.success(user);
     }
 
+    @RequestMapping(value = "/loginInfo", method = RequestMethod.GET)
+    public ResultApi<UmsUser> getUserWhenLogin(@RequestParam(value = "userNameOrEmail") String tag){
+        UmsUser user = ObjectUtils.isEmpty(umsUserService.getUserByEmail(tag)) ? umsUserService.getUserByUsername(tag) : umsUserService.getUserByEmail(tag);
+        return ResultApi.success(user);
+    }
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ResultApi<Object> logOut() {
         return ResultApi.success(null, "退出登陆成功");
